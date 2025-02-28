@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web3 Balance Checker</title>
+</head>
+<body>
+  <h1>Balance Checker</h1>
+  <input type="text" id="addressInput" placeholder="Enter Ethereum address" size="50">
+  <button onclick="getBalance()">Check</button>
+  <p id="result"></p>
+  <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
+  <script>
+    window.onload = function() {
+      const web3 = new Web3(
+        new Web3.providers.HttpProvider('https://ethereum-sepolia.core.chainstack.com/4bc89df13c66265554cf9da8cd9c8840')
+      );
+
+      window.getBalance = async function() {
+        try {
+          const address = document.getElementById('addressInput').value.trim();
+          if (!/^(0x)?[0-9a-fA-F]{40}$/.test(address)) {
+            throw new Error('Please enter a valid Ethereum address');
+          }
+          const checksumAddress = web3.utils.toChecksumAddress(address);
+          const balanceInWei = await web3.eth.getBalance(checksumAddress);
+          const balanceInEther = web3.utils.fromWei(balanceInWei, 'ether');
+          document.getElementById('result').innerText = `Balance: ${balanceInEther} Ether`;
+        } catch (e) {
+          document.getElementById('result').innerText = `Error: ${e.message}`;
+        }
+      };
+    };
+  </script>
+</body>
+</html>
