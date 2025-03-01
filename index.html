@@ -1,59 +1,202 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-  <title>Sakarya Oscar Car Care</title>
-  <style>
-    /* CSS için stil tanımları */
-    .album {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .photo {
-      width: 200px;
-      height: 150px;
-      object-fit: cover;
-      border: 2px solid #333;
-    }
-  </style>
-</head>
-<body>
-  <h1>Sakarya Oscar Car Care</h1>
-  <input type="text" id="addressInput" placeholder="Enter Ethereum address" size="50">
-  <button onclick="getBalance()">Check</button>
-  <p id="result"></p>
+    <head>
+        <title>Sakarya Oscar Car Care</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="is-preload">
 
-  <!-- Fotoğraf Albümü Bölümü -->
-  <h2>Photo Album</h2>
-  <div class="album">
-    <img src="car1.jpg" alt="Car 1" class="photo">
-    <img src="car2.jpg" alt="Car 2" class="photo">
-    <img src="car3.jpg" alt="Car 3" class="photo">
-  </div>
+        <!-- Wrapper -->
+        <div id="wrapper">
 
-  <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
-  <script>
-    window.onload = function() {
-      const web3 = new Web3(
-        new Web3.providers.HttpProvider('https://ethereum-sepolia.core.chainstack.com/4bc89df13c66265554cf9da8cd9c8840')
-      );
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
 
-      window.getBalance = async function() {
-        try {
-          const address = document.getElementById('addressInput').value.trim();
-          if (!/^(0x)?[0-9a-fA-F]{40}$/.test(address)) {
-            throw new Error('Please enter a valid Ethereum address');
-          }
-          const checksumAddress = web3.utils.toChecksumAddress(address);
-          const balanceInWei = await web3.eth.getBalance(checksumAddress);
-          const balanceInEther = web3.utils.fromWei(balanceInWei, 'ether');
-          document.getElementById('result').innerText = `Balance: ${balanceInEther} Ether`;
-        } catch (e) {
-          document.getElementById('result').innerText = `Error: ${e.message}`;
-        }
-      };
-    };
-  </script>
-</body>
+                    <!-- Header -->
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>Sakarya Oscar Car Care</strong> by HTML5 UP</a>
+                        <ul class="icons">
+                            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+                        </ul>
+                    </header>
+
+                    <!-- Banner -->
+                    <section id="banner">
+                        <div class="content">
+                            <header>
+                                <h1>Welcome to Sakarya Oscar Car Care</h1>
+                                <p>Premium car care services in Sakarya</p>
+                            </header>
+                            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia.</p>
+                            <ul class="actions">
+                                <li><a href="#balance-section" class="button big">Check Balance</a></li>
+                            </ul>
+                        </div>
+                        <span class="image object">
+                            <img src="images/pic10.jpg" alt="Car Care Banner" />
+                        </span>
+                    </section>
+
+                    <!-- Section -->
+                    <section>
+                        <header class="major">
+                            <h2>Our Services</h2>
+                        </header>
+                        <div class="features">
+                            <article>
+                                <span class="icon fa-gem"></span>
+                                <div class="content">
+                                    <h3>Car Wash</h3>
+                                    <p>Expert car washing services with top-quality products.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-paper-plane"></span>
+                                <div class="content">
+                                    <h3>Repairs</h3>
+                                    <p>Professional repair services for all car types.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-rocket"></span>
+                                <div class="content">
+                                    <h3>Maintenance</h3>
+                                    <p>Regular maintenance to keep your car in top shape.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-signal"></span>
+                                <div class="content">
+                                    <h3>Detailing</h3>
+                                    <p>Interior and exterior detailing for a showroom finish.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Balance Checker Section -->
+                    <section id="balance-section">
+                        <header class="major">
+                            <h2>Check Your Ethereum Balance</h2>
+                        </header>
+                        <input type="text" id="addressInput" placeholder="Enter Ethereum address" size="50">
+                        <button onclick="getBalance()">Check</button>
+                        <p id="result"></p>
+                    </section>
+
+                    <!-- Section -->
+                    <section>
+                        <header class="major">
+                            <h2>Photo Album</h2>
+                        </header>
+                        <div class="posts">
+                            <article>
+                                <a href="#" class="image"><img src="car1.jpeg" alt="Car 1" /></a>
+                                <h3>Car Wash Example</h3>
+                                <p>High-quality car wash service in action.</p>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="car2.jpeg" alt="Car 2" /></a>
+                                <h3>Repair Work</h3>
+                                <p>Expert repair on a customer’s vehicle.</p>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="car3.jpeg" alt="Car 3" /></a>
+                                <h3>Maintenance Check</h3>
+                                <p>Routine maintenance for optimal performance.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="inner">
+
+                    <!-- Search -->
+                    <section id="search" class="alt">
+                        <form method="post" action="#">
+                            <input type="text" name="query" id="query" placeholder="Search" />
+                        </form>
+                    </section>
+
+                    <!-- Menu -->
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="#balance-section">Balance Checker</a></li>
+                            <li><a href="#photo-album">Photo Album</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Section -->
+                    <section>
+                        <header class="major">
+                            <h2>Get in Touch</h2>
+                        </header>
+                        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus. Contact us for your car care needs!</p>
+                        <ul class="contact">
+                            <li class="icon solid fa-envelope"><a href="mailto:dumanoqlu@gmail.com">dumanoqlu@gmail.com</a></li>
+                            <li class="icon solid fa-phone">(000) 000-0000</li>
+                            <li class="icon solid fa-home">Sakarya, Turkey</li>
+                        </ul>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer id="footer">
+                        <p class="copyright">© 2025 Sakarya Oscar Car Care. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                    </footer>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
+        <script>
+          window.onload = function() {
+            const web3 = new Web3(
+              new Web3.providers.HttpProvider('https://ethereum-sepolia.core.chainstack.com/4bc89df13c66265554cf9da8cd9c8840')
+            );
+            window.getBalance = async function() {
+              try {
+                const address = document.getElementById('addressInput').value.trim();
+                if (!/^(0x)?[0-9a-fA-F]{40}$/.test(address)) {
+                  throw new Error('Please enter a valid Ethereum address');
+                }
+                const checksumAddress = web3.utils.toChecksumAddress(address);
+                const balanceInWei = await web3.eth.getBalance(checksumAddress);
+                const balanceInEther = web3.utils.fromWei(balanceInWei, 'ether');
+                document.getElementById('result').innerText = `Balance: ${balanceInEther} Ether`;
+              } catch (e) {
+                document.getElementById('result').innerText = `Error: ${e.message}`;
+              }
+            };
+          };
+        </script>
+
+    </body>
 </html>
